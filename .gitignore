@@ -1,2 +1,4 @@
 .idea/
 *.pyc
+/smart_cookbook/assets/media/
+/smart_cookbook/db.sqlite3
