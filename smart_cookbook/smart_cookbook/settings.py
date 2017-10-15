@@ -42,9 +42,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'smart_cookbook.middlewares.ApiKeyMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'smart_cookbook.middlewares.ApiKeyMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
