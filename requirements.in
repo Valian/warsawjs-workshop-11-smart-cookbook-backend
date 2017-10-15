@@ -1,3 +1,5 @@
 django==1.11
 django-rest-framework
 pillow
+gunicorn
+psycopg2
