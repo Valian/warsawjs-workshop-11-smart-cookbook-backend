@@ -5,8 +5,10 @@ services:
 
   app:
     build: .
+    command: gunicorn -b 0.0.0.0:8000 -w 1 --reload smart_cookbook.wsgi:application
+    environment:
+      DEBUG: 1
     ports:
       - 8000:8000
     volumes:
-      - smart_cookbook:/srv
-    command: gunicorn -p 8000 -w 1 smart_cookbook.wsgi:application
+      - .:/srv

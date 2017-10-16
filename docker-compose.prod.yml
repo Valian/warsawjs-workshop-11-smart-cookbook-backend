@@ -1,0 +1,17 @@
+version: '2'
+services:
+  database:
+    image: postgres
+
+  app:
+    build: .
+    command: gunicorn -b 0.0.0.0:8000 -w 4 smart_cookbook.wsgi:application
+    environment:
+      DEBUG: 0
+    ports:
+      - 8000:8000
+    volumes:
+      - workshop-assets:/srv/smart_cookbook/assets
+
+volumes:
+  workshop-assets:

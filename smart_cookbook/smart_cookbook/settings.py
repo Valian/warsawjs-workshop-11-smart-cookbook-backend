@@ -12,6 +12,21 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+sentinel = object()
+
+
+def get_environment_variable(key, default=sentinel, coerce=str):
+    try:
+        value = os.environ[key]
+        return coerce(value)
+    except KeyError:
+        if default != sentinel:
+            return default
+        raise ValueError(f"You must specify {key} environment variable")
+    except Exception as e:
+        raise ValueError(f"Error while parsing environment variable {key}, more info: {e}")
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -23,7 +38,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'tilyarsx_4)7bpx!g8iy6#5(79souypth9i*#4o$a!nm2#lg+f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = get_environment_variable('DEBUG', False, coerce=bool)
 
 ALLOWED_HOSTS = []
 
@@ -124,6 +139,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'assets/static'
+
+MEDIA_URL = '/media'
 MEDIA_ROOT = 'assets/media'
 
 API_KEY = 'warsawjs'
