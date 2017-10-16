@@ -7,7 +7,7 @@ services:
     build: .
     command: gunicorn -b 0.0.0.0:8000 -w 4 smart_cookbook.wsgi:application
     environment:
-      DEBUG: 0
+      DEBUG: ''
     ports:
       - 8000:8000
     volumes:
