@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.conf import settings
 from django.conf.urls import url
-from django.conf.urls.static import static
 from django.contrib import admin
+from django.views.static import serve
 
 from rest_framework.routers import DefaultRouter
 
@@ -30,8 +30,8 @@ admin.autodiscover()
 
 urlpatterns = [
     *router.get_urls(),
-    *static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
-    *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
+    url(rf'^{settings.STATIC_URL.lstrip("/")}(?P<path>.*)$', serve, kwargs={'document_root': settings.STATIC_ROOT}),
+    url(rf'^{settings.MEDIA_URL.lstrip("/")}(?P<path>.*)$', serve, kwargs={'document_root': settings.MEDIA_ROOT}),
     url(r'^admin/', admin.site.urls),
 ]
 

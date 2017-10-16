@@ -40,8 +40,7 @@ SECRET_KEY = 'tilyarsx_4)7bpx!g8iy6#5(79souypth9i*#4o$a!nm2#lg+f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = get_environment_variable('DEBUG', False, coerce=bool)
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['localhost', '94.177.243.54']
 
 # Application definition
 
@@ -120,6 +119,22 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+        },
+    },
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -145,3 +160,4 @@ MEDIA_URL = '/media'
 MEDIA_ROOT = 'assets/media'
 
 API_KEY = 'warsawjs'
+
