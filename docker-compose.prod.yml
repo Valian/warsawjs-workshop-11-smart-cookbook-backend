@@ -2,6 +2,7 @@ version: '2'
 services:
   database:
     image: postgres
+    restart: always
 
   app:
     build: .
@@ -12,6 +13,7 @@ services:
       - 8000:8000
     volumes:
       - workshop-assets:/srv/smart_cookbook/assets
+    restart: always
 
 volumes:
   workshop-assets:
