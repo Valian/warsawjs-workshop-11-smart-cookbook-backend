@@ -25,4 +25,4 @@ class SimpleRecipeSerializer(serializers.ModelSerializer):
 
 
 class RecipeSerializer(SimpleRecipeSerializer):
-    ingredients = IngredientQuantitySerializer(many=True)
+    ingredients = IngredientQuantitySerializer(many=True, read_only=True)

@@ -27,3 +27,6 @@ class IngredientQuantity(models.Model):
     ingredient = models.ForeignKey(Ingredient, related_name='ingredients_quantities')
     recipe = models.ForeignKey(Recipe, related_name='ingredients_quantities')
     quantity = models.SmallIntegerField(default=1)
+
+    class Meta:
+        unique_together = ('ingredient', 'recipe')

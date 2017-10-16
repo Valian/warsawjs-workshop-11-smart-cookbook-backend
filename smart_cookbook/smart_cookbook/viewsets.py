@@ -10,6 +10,9 @@ class IngredientViewset(viewsets.ModelViewSet):
 
 class RecipeViewset(viewsets.ModelViewSet):
     queryset = models.Recipe.objects.all()
+    serializer_class = serializers.RecipeSerializer
 
-    def get_serializer_class(self):
-        return serializers.RecipeSerializer
+
+class IngredientQuantityViewset(viewsets.ModelViewSet):
+    queryset = models.IngredientQuantity.objects.all()
+    serializer_class = serializers.IngredientQuantitySerializer

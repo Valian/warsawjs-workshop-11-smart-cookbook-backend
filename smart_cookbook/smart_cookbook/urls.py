@@ -25,6 +25,7 @@ from smart_cookbook import viewsets
 router = DefaultRouter()
 router.register('ingredients', viewsets.IngredientViewset)
 router.register('recipes', viewsets.RecipeViewset)
+router.register('ingredient-quantities', viewsets.IngredientQuantityViewset)
 
 admin.autodiscover()
 
