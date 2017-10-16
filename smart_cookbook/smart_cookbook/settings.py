@@ -156,7 +156,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = 'assets/static'
 
-MEDIA_URL = '/media'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = 'assets/media'
 
 API_KEY = 'warsawjs'
